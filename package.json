@@ -1,16 +1,17 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "bsd-weekly",
+  "description": "Free, once–weekly e-mail round-up of BSD news and articles.",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
     "watch:tailwind": "postcss static/tailwind.css -o static/index.css -w",
-    "build": "npm run build:tailwind && sapper build --legacy",
+    "build": "sapper build --legacy",
     "export": "sapper export --legacy",
     "start": "node __sapper__/build",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
-    "test": "run-p --race dev cy:run"
+    "test": "run-p --race dev cy:run",
+    "now-build": "npm run export"
   },
   "dependencies": {
     "compression": "^1.7.1",

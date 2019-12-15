@@ -1,46 +1,22 @@
-<style>
-	h1, figure, p {
-		text-align: center;
-		margin: 0 auto;
-	}
-
-	h1 {
-		font-size: 2.8em;
-		text-transform: uppercase;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
-	}
-
-	figure {
-		margin: 0 0 1em 0;
-	}
-
-	img {
-		width: 100%;
-		max-width: 400px;
-		margin: 0 0 1em 0;
-	}
-
-	p {
-		margin: 1em auto;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
-	}
-</style>
+<script>
+	import Subscribe from '../components/Subscribe.svelte';
+</script>
 
 <svelte:head>
-	<title>Sapper project template</title>
+	<title>BSD Weekly</title>
 </svelte:head>
 
-<h1>Great success!</h1>
-
-<figure>
-	<img alt='Borat' src='great-success.png'>
-	<figcaption>HIGH FIVE!</figcaption>
-</figure>
-
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
+<div class="text-center text-xl text-gray-800">
+	<p class="pb-2">
+		BSD Weekly is a free, once–weekly e-mail round-up of BSD news and articles.<br/>
+		Currated by <a class="text-red-800 hover:text-red-700" href="https://hovancik.net">Jan Hovancik</a>
+		from your content on <a class="text-red-800 hover:text-red-700" href="https://discoverbsd.com">DiscoverBSD</a>
+		and <a class="text-red-800 hover:text-red-700" href="https://bsdsec.net">BSDSec</a>.
+	</p>
+	<div class="my-8">
+		<Subscribe/>
+	</div>
+	<h1 class="w-full my-2 text-4xl font-bold leading-tight">
+		Soon-<span class="italic text-red-400">ish</span> in your inbox!
+	</h1>
+</div>

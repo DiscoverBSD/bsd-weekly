@@ -1,9 +1,11 @@
 <script>
 	import Subscribe from '../components/Subscribe.svelte';
+	import Meta from '../components/Meta.svelte';
 </script>
 
 <svelte:head>
 	<title>BSD Weekly</title>
+	<Meta/>
 </svelte:head>
 
 <div class="text-center text-xl text-gray-800">

@@ -610,6 +610,34 @@ video {
   }
 }
 
+/*
+custom styles for HTML from markdown html files
+where tailwind classes are not passed
+
+https://tailwindcss.com/docs/extracting-components/#extracting-css-components-with-apply
+*/
+
+.markdowned a { color: #9b2c2c; margin-bottom: 0.5rem;
+}
+
+.markdowned a:hover { color: #c53030;
+}
+
+.markdowned p { font-size: 1.125rem; padding-top: 0.5rem; padding-bottom: 0.5rem;
+}
+
+.markdowned h2 { font-size: 1.5rem; font-weight: 400; color: #000; padding-bottom: 0.5rem; padding-top: 2.5rem;
+}
+
+.markdowned h3 { font-size: 1.25rem; font-weight: 400; color: #000; padding-bottom: 0.5rem; padding-top: 2.5rem;
+}
+
+.markdowned ol { list-style-type: decimal; list-style-position: inside;
+}
+
+.markdowned ul { list-style-type: disc; list-style-position: inside;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

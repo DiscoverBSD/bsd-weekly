@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
+
+/*
+custom styles for HTML from markdown html files
+where tailwind classes are not passed
+
+https://tailwindcss.com/docs/extracting-components/#extracting-css-components-with-apply
+*/
+
+.markdowned a { @apply text-red-800 mb-2; }
+.markdowned a:hover { @apply text-red-700; }
+.markdowned p { @apply text-lg py-2; }
+.markdowned h2 { @apply text-2xl font-normal text-black pb-2 pt-10; }
+.markdowned h3 { @apply text-xl font-normal text-black pb-2 pt-10; }
+.markdowned ol { @apply list-decimal list-inside; }
+.markdowned ul { @apply list-disc list-inside; }
+
 @tailwind utilities;

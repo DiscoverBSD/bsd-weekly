@@ -15,7 +15,12 @@
   },
   "dependencies": {
     "compression": "^1.7.1",
+    "cypress": "^3.8.0",
+    "date-fns": "^2.8.1",
+    "gray-matter": "^4.0.2",
+    "marked": "^0.8.0",
     "polka": "next",
+    "prismjs": "^1.17.1",
     "sirv": "^0.4.0"
   },
   "devDependencies": {

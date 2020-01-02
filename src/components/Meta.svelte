@@ -4,7 +4,7 @@
   export let url = "https://bsdweekly.com"
   const imageUrl = `https://motif.imgix.com/i?url=${encodeURIComponent(url)}&image_url=${encodeURIComponent('https://bsdweekly.com/mr-cup-fabien-barral-Mwuod2cm8g4-unsplash.jpg')}&color=deacac&logo_url=${encodeURIComponent("https://bsdweekly.com/bsdweekly.png")}&logo_alignment=top%2Ccenter&text_alignment=bottom%2Ccenter&logo_padding=70&font_family=Avenir%20Next%20Demi%2CBold&text_color=1d1d1d`
 </script>
-
+<title>{name}</title>
 <meta name="description" content={description}>
 
 <meta itemprop="name" content={name}>

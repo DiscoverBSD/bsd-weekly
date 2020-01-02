@@ -13,7 +13,6 @@
 </script>
 
 <svelte:head>
-	<title>BSD Weekly</title>
 	<Meta/>
 </svelte:head>
 

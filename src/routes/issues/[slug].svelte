@@ -26,7 +26,6 @@
 </script>
 
 <svelte:head>
-  <title>{meta.name}</title>
   <Meta {...meta}/>
 </svelte:head>
 

@@ -13,7 +13,7 @@ https://tailwindcss.com/docs/extracting-components/#extracting-css-components-wi
 .markdowned p { @apply text-lg py-2; }
 .markdowned h2 { @apply text-2xl font-normal text-black pb-2 pt-10; }
 .markdowned h3 { @apply text-xl font-normal text-black pb-2 pt-10; }
-.markdowned ol { @apply list-decimal list-inside; }
-.markdowned ul { @apply list-disc list-inside; }
+.markdowned ol { @apply list-decimal list-inside text-base; }
+.markdowned ul { @apply list-disc list-inside text-base; }
 
 @tailwind utilities;

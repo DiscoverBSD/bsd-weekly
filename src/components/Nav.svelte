@@ -20,7 +20,7 @@
 	<div class="text-center text-xl text-gray-800">
 		<p class="mt-8">
 			BSD Weekly is a free, once–weekly e-mail round-up of BSD news and articles.<br/>
-			Currated by <a class="text-red-800 hover:text-red-700" href="https://hovancik.net">Jan Hovancik</a>
+			Curated by <a class="text-red-800 hover:text-red-700" href="https://hovancik.net">Jan Hovancik</a>
 			from your content on <a class="text-red-800 hover:text-red-700" href="https://discoverbsd.com">DiscoverBSD</a>
 			and <a class="text-red-800 hover:text-red-700" href="https://bsdsec.net">BSDSec</a>.
 		</p>

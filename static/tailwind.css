@@ -15,5 +15,8 @@ https://tailwindcss.com/docs/extracting-components/#extracting-css-components-wi
 .markdowned h3 { @apply text-xl font-normal text-black pb-2 pt-10; }
 .markdowned ol { @apply list-decimal list-inside text-base; }
 .markdowned ul { @apply list-disc list-inside text-base; }
+.markdowned table { @apply table-auto; }
+.markdowned table thead tr th { @apply border px-4 py-2 text-base;}
+.markdowned table tbody tr td { @apply border px-4 py-2 text-base;}
 
 @tailwind utilities;

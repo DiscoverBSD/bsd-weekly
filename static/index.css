@@ -642,6 +642,12 @@ https://tailwindcss.com/docs/extracting-components/#extracting-css-components-wi
 .markdowned table tbody tr td { border-width: 1px; padding-left: 1rem; padding-right: 1rem; padding-top: 0.5rem; padding-bottom: 0.5rem; font-size: 1rem;
 }
 
+.markdowned blockquote { padding: 0.5rem; --bg-opacity: 1; background-color: #f7fafc; background-color: rgba(247, 250, 252, var(--bg-opacity)); margin-bottom: 1rem; border-left-width: 4px; --border-opacity: 1; border-color: #fc8181; border-color: rgba(252, 129, 129, var(--border-opacity)); font-style: italic;
+}
+
+.markdowned blockquote > p { margin-bottom: 0;
+}
+
 .space-y-0 > :not(template) ~ :not(template) {
   --space-y-reverse: 0;
   margin-top: calc(0px * calc(1 - var(--space-y-reverse)));

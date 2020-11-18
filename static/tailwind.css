@@ -18,5 +18,7 @@ https://tailwindcss.com/docs/extracting-components/#extracting-css-components-wi
 .markdowned table { @apply table-auto; }
 .markdowned table thead tr th { @apply border px-4 py-2 text-base;}
 .markdowned table tbody tr td { @apply border px-4 py-2 text-base;}
+.markdowned blockquote { @apply p-2 bg-gray-100 mb-4 border-l-4 border-red-700 italic;}
+.markdowned blockquote > p { @apply mb-0; }
 
 @tailwind utilities;

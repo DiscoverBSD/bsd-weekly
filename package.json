@@ -2,6 +2,9 @@
   "name": "bsd-weekly",
   "description": "Free, once–weekly e-mail round-up of BSD news and articles.",
   "version": "0.0.1",
+  "engines" : { 
+    "node" : "^16.16.0"
+  },
   "scripts": {
     "dev": "sapper dev",
     "watch:tailwind": "postcss static/tailwind.css -o static/index.css -w",

@@ -3,7 +3,7 @@
   "description": "Free, once–weekly e-mail round-up of BSD news and articles.",
   "version": "0.0.1",
   "engines" : { 
-    "node" : "^16.16.0"
+    "node" : "18.16.1"
   },
   "scripts": {
     "dev": "sapper dev",

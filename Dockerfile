@@ -1,4 +1,4 @@
-FROM node:12.14.1
+FROM node:18.15.0
 
 WORKDIR /bsd-weekly
 COPY package.json package-lock.json ./

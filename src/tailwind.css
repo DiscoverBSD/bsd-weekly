@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-.markdowned a { @apply text-red-800 mb-2; }
-.markdowned a:hover { @apply text-red-700; }
+.markdowned a { @apply text-bsd-coral mb-2; }
+.markdowned a:hover { @apply text-bsd-coral-hover; }
 .markdowned p { @apply text-lg py-2; }
 .markdowned h2 { @apply text-2xl font-normal text-black pb-2 pt-10; }
 .markdowned h3 { @apply text-xl font-normal text-black pb-2 pt-10; }
@@ -12,5 +12,5 @@
 .markdowned table { @apply table-auto; }
 .markdowned table thead tr th { @apply border px-4 py-2 text-base;}
 .markdowned table tbody tr td { @apply border px-4 py-2 text-base;}
-.markdowned blockquote { @apply p-2 bg-gray-100 mb-4 border-l-4 border-red-700 italic;}
+.markdowned blockquote { @apply p-2 bg-gray-100 mb-4 border-l-4 border-bsd-coral italic;}
 .markdowned blockquote > p { @apply mb-0; }

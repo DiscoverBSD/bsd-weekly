@@ -2,15 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-.markdowned a { @apply text-bsd-coral mb-2; }
-.markdowned a:hover { @apply text-bsd-coral-hover; }
+:root {
+	--brand-accent: #FF625C;
+	--brand-accent-hover: #E74E48;
+	--brand-accent-soft: #FFC1BE;
+	--brand-maroon: #3F2534;
+	--brand-maroon-soft: #593543;
+	--brand-ink: #2B1E25;
+	--brand-ink-muted: #6F5B63;
+	--brand-border: #E9D9D7;
+	--brand-surface: #FDF9F8;
+	--brand-surface-alt: #F8F0EE;
+	--brand-focus-ring: #FF8A84;
+}
+
+@layer components {
+	.text-body { @apply text-brand-ink; }
+	.text-muted { @apply text-brand-ink-muted; }
+	.text-heading { @apply text-brand-maroon; }
+		.link { @apply text-brand-accent underline decoration-brand-accent-soft underline-offset-2 transition-colors; }
+		.link:hover { @apply text-brand-accent-hover decoration-brand-accent; }
+	.btn-primary { @apply inline-flex items-center justify-center px-5 py-3 rounded bg-brand-accent text-white font-medium shadow-sm transition-colors; }
+	.btn-primary:hover { @apply bg-brand-accent-hover; }
+	.surface { @apply bg-brand-surface; }
+	.surface-alt { @apply bg-brand-surface-alt; }
+	.card { @apply surface-alt border border-brand-border rounded p-4; }
+	.border-default { @apply border-brand-border; }
+	.focus-ring:focus { outline:2px solid var(--brand-focus-ring); outline-offset:2px; }
+}
+
+.markdowned a { @apply link mb-2; }
+.markdowned a:hover { @apply text-brand-accent-hover decoration-brand-accent; }
 .markdowned p { @apply text-lg py-2; }
-.markdowned h2 { @apply text-2xl font-normal text-black pb-2 pt-10; }
-.markdowned h3 { @apply text-xl font-normal text-black pb-2 pt-10; }
+.markdowned h2 { @apply text-2xl font-semibold text-heading pb-2 pt-10 tracking-tight; }
+.markdowned h3 { @apply text-xl font-semibold text-heading pb-2 pt-10; }
 .markdowned ol { @apply list-decimal list-inside text-base; }
 .markdowned ul { @apply list-disc list-inside text-base; }
 .markdowned table { @apply table-auto; }
 .markdowned table thead tr th { @apply border px-4 py-2 text-base;}
 .markdowned table tbody tr td { @apply border px-4 py-2 text-base;}
-.markdowned blockquote { @apply p-2 bg-gray-100 mb-4 border-l-4 border-bsd-coral italic;}
+.markdowned blockquote { @apply p-2 surface-alt mb-4 border-l-4 border-brand-accent italic rounded-sm;}
 .markdowned blockquote > p { @apply mb-0; }

@@ -4,12 +4,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'bsd-coral': '#E84855',        // Warmer, more red-leaning coral
-        'bsd-maroon': '#3F2534',       // Original maroon from logo
-        'bsd-coral-hover': '#D63847',  // Deeper coral for hover
-        'bsd-maroon-hover': '#2D1E26', // Deeper maroon for hover
-        'bsd-coral-light': '#F2646F',  // Lighter coral for accents
-        'bsd-neutral': '#6B7280',      // Sophisticated gray for balance
+        // Variable-driven semantic brand palette
+        'brand-accent': 'var(--brand-accent)',
+        'brand-accent-hover': 'var(--brand-accent-hover)',
+        'brand-accent-soft': 'var(--brand-accent-soft)',
+        'brand-maroon': 'var(--brand-maroon)',
+        'brand-maroon-soft': 'var(--brand-maroon-soft)',
+        'brand-ink': 'var(--brand-ink)',
+        'brand-ink-muted': 'var(--brand-ink-muted)',
+        'brand-border': 'var(--brand-border)',
+        'brand-surface': 'var(--brand-surface)',
+        'brand-surface-alt': 'var(--brand-surface-alt)',
+        'brand-focus-ring': 'var(--brand-focus-ring)'
       }
     },
   },

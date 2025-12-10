@@ -1,4 +1,5 @@
 import { basename } from 'path'
+import { render } from 'svelte/server'
 
 const getPosts = async () => {
   const posts = await Promise.all(
@@ -6,7 +7,8 @@ const getPosts = async () => {
       async ([path, resolver]) => {
         const { ...resolved } = await resolver()
         const { metadata } = resolved
-        let { html } = resolved.default.render()
+        const rendered = render(resolved.default)
+        let html = rendered.body
         const excerpt = html.split('<h2')[0]
         html = html.replace(excerpt, '')
         const slug = basename(path, '.md')

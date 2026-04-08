@@ -1,0 +1,102 @@
+name: Publish Newsletter
+on:
+  schedule:
+    - cron: '0 8 * * 3' # Every Wednesday at 8am UTC
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  create-newsletter-pr:
+    runs-on: ubuntu-latest
+    env:
+      POSTS_DIR: src/routes/issues.json/posts
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: trunk
+
+      - name: Fetch newsletter from DiscoverBSD
+        id: fetch
+        run: |
+          if ! response=$(curl -sf -H "Authorization: Bearer ${{ secrets.NEWSLETTER_API_TOKEN }}" \
+            https://discoverbsd.com/api/newsletter); then
+            echo "Failed to fetch newsletter"
+            exit 1
+          fi
+
+          issue_number=$(echo "$response" | jq -r '.issue_number')
+          if [ "$issue_number" = "null" ] || [ -z "$issue_number" ] || ! echo "$issue_number" | grep -qE '^[0-9]+$'; then
+            echo "Invalid or missing issue number: '$issue_number'"
+            exit 1
+          fi
+
+          markdown=$(echo "$response" | jq -r '.markdown')
+          if [ "$markdown" = "null" ] || [ -z "$markdown" ]; then
+            echo "No markdown content returned"
+            exit 1
+          fi
+
+          echo "issue_number=$issue_number" >> "$GITHUB_OUTPUT"
+          echo "$markdown" > "${POSTS_DIR}/${issue_number}.md"
+
+      - name: Check if issue already exists
+        id: check
+        env:
+          ISSUE_NUMBER: ${{ steps.fetch.outputs.issue_number }}
+        run: |
+          issue_number="$ISSUE_NUMBER"
+          branch_name="newsletter-${issue_number}"
+          echo "branch_name=$branch_name" >> "$GITHUB_OUTPUT"
+
+          # Skip if file already exists on trunk
+          if git show "origin/trunk:${POSTS_DIR}/${issue_number}.md" > /dev/null 2>&1; then
+            echo "Issue ${issue_number} already exists on trunk, skipping"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+          # Check if a branch or PR already exists
+          if git ls-remote --exit-code --heads origin "$branch_name" > /dev/null 2>&1; then
+            echo "branch_exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "branch_exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create PR
+        if: steps.check.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ steps.fetch.outputs.issue_number }}
+          BRANCH_NAME: ${{ steps.check.outputs.branch_name }}
+          BRANCH_EXISTS: ${{ steps.check.outputs.branch_exists }}
+        run: |
+          issue_number="$ISSUE_NUMBER"
+          branch_name="$BRANCH_NAME"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if [ "$BRANCH_EXISTS" = "true" ]; then
+            git fetch origin "$branch_name"
+            git checkout "$branch_name"
+            git reset --hard origin/trunk
+          else
+            git checkout -b "$branch_name"
+          fi
+
+          git add "${POSTS_DIR}/${issue_number}.md"
+          git commit -m "Add newsletter issue ${issue_number}"
+          git push --force-with-lease origin "$branch_name"
+
+          if [ "$BRANCH_EXISTS" = "true" ]; then
+            echo "Branch already existed, force-updated. PR should already be open."
+          else
+            gh pr create \
+              --title "Publish Newsletter Issue ${issue_number}" \
+              --body "Auto-generated newsletter issue ${issue_number} from [DiscoverBSD](https://discoverbsd.com)." \
+              --base trunk \
+              --head "$branch_name"
+          fi

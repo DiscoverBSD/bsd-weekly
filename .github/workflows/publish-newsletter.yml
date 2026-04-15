@@ -1,7 +1,7 @@
 name: Publish Newsletter
 on:
   schedule:
-    - cron: '0 8 * * 3' # Every Wednesday at 8am UTC
+    - cron: '50 4 * * 3' # Every Wednesday at 4:50am UTC
   workflow_dispatch: # Manual trigger
 
 jobs:

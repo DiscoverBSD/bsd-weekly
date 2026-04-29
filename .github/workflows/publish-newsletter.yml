@@ -39,7 +39,7 @@ jobs:
           fi
 
           echo "issue_number=$issue_number" >> "$GITHUB_OUTPUT"
-          echo "$markdown" > "${POSTS_DIR}/${issue_number}.md"
+          echo "$markdown" > "/tmp/${issue_number}.md"
 
       - name: Check if issue already exists
         id: check
@@ -87,6 +87,7 @@ jobs:
             git checkout -b "$branch_name"
           fi
 
+          cp "/tmp/${issue_number}.md" "${POSTS_DIR}/${issue_number}.md"
           git add "${POSTS_DIR}/${issue_number}.md"
           git commit -m "Add newsletter issue ${issue_number}"
           git push --force-with-lease origin "$branch_name"

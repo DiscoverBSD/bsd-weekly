@@ -1,7 +1,9 @@
 name: Publish Newsletter
 on:
   schedule:
-    - cron: '50 4 * * 3' # Every Wednesday at 4:50am UTC
+    # Wednesday 02:45 UTC. Deliberately off the top of the hour: GitHub delays
+    # scheduled runs the most at :00 under load, so :45 tends to start sooner.
+    - cron: '45 2 * * 3'
   workflow_dispatch: # Manual trigger
 
 jobs:

@@ -52,8 +52,8 @@ jobs:
           branch_name="newsletter-${issue_number}"
           echo "branch_name=$branch_name" >> "$GITHUB_OUTPUT"
 
-          # Skip if file already exists on trunk
-          if git show "origin/trunk:${POSTS_DIR}/${issue_number}.md" > /dev/null 2>&1; then
+          # Skip if file already exists on trunk (checked out as the working tree)
+          if [ -f "${POSTS_DIR}/${issue_number}.md" ]; then
             echo "Issue ${issue_number} already exists on trunk, skipping"
             echo "skip=true" >> "$GITHUB_OUTPUT"
           else
@@ -94,8 +94,9 @@ jobs:
           git commit -m "Add newsletter issue ${issue_number}"
           git push --force-with-lease origin "$branch_name"
 
-          if [ "$BRANCH_EXISTS" = "true" ]; then
-            echo "Branch already existed, force-updated. PR should already be open."
+          open_prs=$(gh pr list --head "$branch_name" --base trunk --state open --json number --jq 'length')
+          if [ "$open_prs" != "0" ]; then
+            echo "Open PR already exists for ${branch_name}, branch force-updated."
           else
             gh pr create \
               --title "Publish Newsletter Issue ${issue_number}" \
